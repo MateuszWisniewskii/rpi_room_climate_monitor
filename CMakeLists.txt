@@ -33,6 +33,9 @@ project(rpi_room_climate_monitor C CXX ASM)
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
+# Add subdirectories with libraries
+add_subdirectory(dht)
+
 # Add executable. Default name is the project name, version 0.1
 
 add_executable(rpi_room_climate_monitor rpi_room_climate_monitor.c )
@@ -54,9 +57,7 @@ target_include_directories(rpi_room_climate_monitor PRIVATE
 )
 
 # Add any user requested libraries
-target_link_libraries(rpi_room_climate_monitor 
-        
-        )
+target_link_libraries(rpi_room_climate_monitor dht)
 
 pico_add_extra_outputs(rpi_room_climate_monitor)
 
